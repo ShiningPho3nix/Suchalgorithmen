@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Eine einfache Implementierung der Binär Suche. Man kann eine beliebige Menge
  * an Zahlen übergeben. Die Letzte Zahl in den übergebenen Zahlen ist die nach
@@ -12,7 +10,7 @@ import java.util.Arrays;
 public class BinarySearch extends SSearch {
 
 	/**
-	 * mithilfe des inizialen start und enddpunktes wird des mittelpunkt berechnet.
+	 * mithilfe des inizialen start und enddpunktes wird der mittelpunkt berechnet.
 	 * Anschließend wird geschaut ob die gesuchte zahl größer oder kleiner als die
 	 * zahl welche an dem errechneten mittelpunkt steht ist. Der Mittelpunkt wird
 	 * dementsprechend erhöht oder erniedrigt, bis die Zahl gefunden wurde.
@@ -24,7 +22,7 @@ public class BinarySearch extends SSearch {
 	 */
 	public static void search(int[] intArr, int start, int end, int number) {
 		int newStart = start;
-		int newEnd = end - 1;
+		int newEnd = end;
 		int m = 0;
 		while (newStart <= newEnd) {
 			m = (newStart + newEnd) / 2;
@@ -50,20 +48,8 @@ public class BinarySearch extends SSearch {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int number = 0;
-		if (args.length <= 1) {
-			System.out.println("Array ist leer!");
-			System.exit(-1);
-		}
-		try {
-			number = Integer.parseInt(args[args.length - 1]);
-			args = Arrays.copyOf(args, args.length - 1);
-		} catch (NumberFormatException e) {
-			System.out.println("Letztes Zeichen ist keine Zahl");
-			e.printStackTrace();
-			System.exit(-2);
-		}
+		args = findSearchedNumber(args);
 		int[] intArr = start(args);
-		search(intArr, 0, intArr.length, number);
+		search(intArr, 0, intArr.length - 1, number);
 	}
 }

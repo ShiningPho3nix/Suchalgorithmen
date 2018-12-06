@@ -1,5 +1,8 @@
+import java.util.Arrays;
 
 public class SSearch {
+
+	static int number = 0;
 
 	/**
 	 * Methode um aus den in der Main Methode übergebenen Strings, ein int[] zu
@@ -28,7 +31,8 @@ public class SSearch {
 	}
 
 	/**
-	 * Funktion zum Austauschen zweier Werte i und j.
+	 * Funktion zum Austauschen zweier Werte an den Indexen i und j in dem Array
+	 * intArr.
 	 * 
 	 * @param i
 	 * @param j
@@ -65,4 +69,19 @@ public class SSearch {
 		return sortArr;
 	}
 
+	public static String[] findSearchedNumber(String[] args) {
+		if (args.length <= 1) {
+			System.out.println("Array ist leer!");
+			System.exit(-1);
+		}
+		try {
+			number = Integer.parseInt(args[args.length - 1]);
+			args = Arrays.copyOf(args, args.length - 1);
+		} catch (NumberFormatException e) {
+			System.out.println("Letztes Zeichen ist keine Zahl");
+			e.printStackTrace();
+			System.exit(-2);
+		}
+		return args;
+	}
 }
